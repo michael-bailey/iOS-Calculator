@@ -2,32 +2,46 @@
 //  iOS_CalculatorTests.swift
 //  iOS-CalculatorTests
 //
-//  Created by michael bailey on 02/10/2020.
+//  Created by michael bailey on 04/10/2020.
 //
 
 import XCTest
 @testable import iOS_Calculator
 
-class iOS_CalculatorTests: XCTestCase {
+class CalcItemTests: XCTestCase {
+	func testNumber() {
+		let one = Number()
+	}
+	
+	func testBasicOperations() {
+		<#statements#>
+	}
+}
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
+class ClculatorTests: XCTestCase {
+	
+	func testPushOnToStack() {
+		let calc = Calculator()
+		let item1 = CalcItem(type: .number, value: 1.0)
+		calc.push(item: item1)
+		
+		XCTAssertEqual(calc.stack[0], item1)
+	}
+	
+	func testPopOfStack() {
+		let calc = Calculator()
+		let item1 = CalcItem(type: .number, value: 1.0)
+		calc.push(item: item1)
+		
+		let item2 = calc.pop()
+		
+		XCTAssertEqual(item2, item1)
+	}
+	
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
